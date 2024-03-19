@@ -10,9 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/base": "^1.0.0-beta.4",
+    "@cloudinary/react": "^1.13.0",
+    "@cloudinary/url-gen": "^1.19.0",
     "@react-three/drei": "^9.102.3",
     "@react-three/fiber": "^8.15.19",
     "axios": "^1.6.7",
+    "cloudinary": "^2.0.3",
     "cors": "^2.8.5",
     "express": "^4.18.3",
     "framer-motion": "^11.0.13",

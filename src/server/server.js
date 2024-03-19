@@ -1,5 +1,5 @@
 import express from 'express';
-import  fetch from 'node-fetch';
+import fetch from 'node-fetch';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,19 +17,17 @@ app.options('*', (req, res) => {
   res.sendStatus(200); // Respond to preflight requests
 });
 
-app.post('/submit-image', async (req, res) => {
+app.post('/submit-glb-url', async (req, res) => {
   try {
-    const response = await fetch('https://api.tripo3d.ai/v2/openapi/task', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': req.headers.authorization
-      },
-      body: JSON.stringify(req.body)
-    });
+    const glbUrl = req.body.glbUrl;
+    
+    // Fetch the GLB model from the provided URL
+    const response = await fetch(glbUrl);
+    const glbBuffer = await response.arrayBuffer();
+    const glbData = Buffer.from(glbBuffer);
 
-    const responseData = await response.json();
-    res.json(responseData);
+    // Send the GLB model data to the frontend
+    res.status(200).send(glbData);
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ message: 'Internal server error' });
