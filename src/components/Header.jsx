@@ -11,13 +11,13 @@ const Header = () => {
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
-    setError(null); // Reset error message when selecting a new file
+    setError(null); 
   };
 
   const uploadToCloudinary = async () => {
     if (!selectedFile) {
       setError('Please select a file.');
-      setTimeout(() => setError(null), 3000); // Reset error message after 3 seconds
+      setTimeout(() => setError(null), 3000); 
       return;
     }
 
@@ -26,14 +26,14 @@ const Header = () => {
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
-      formData.append('upload_preset', "s3t1mno3"); // Replace with your Cloudinary upload preset
+      formData.append('upload_preset', "s3t1mno3"); 
 
       const cloudinaryResponse = await axios.post(
         `https://api.cloudinary.com/v1_1/deklwmu8j/image/upload`,
         formData
       );
 
-      setImageUrl(cloudinaryResponse.data.secure_url); // Save the uploaded image URL
+      setImageUrl(cloudinaryResponse.data.secure_url); 
     } catch (error) {
       console.error('Error uploading image to Cloudinary:', error);
       setError('Error uploading image. Please try again.');
@@ -59,7 +59,7 @@ const Header = () => {
       };
 
       const headers = {
-        Authorization: 'Bearer msy_2LzJblKqKUBtDuToR9kgJgcfXnmMMAfSmJtB',
+        Authorization: 'Bearer msy_podjI0ZlCscpQGs4gnVXvKcsJcrTPWL6fH2F',
         'Content-Type': 'application/json'
       };
 
