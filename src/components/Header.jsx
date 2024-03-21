@@ -59,7 +59,7 @@ const Header = () => {
       };
 
       const headers = {
-        Authorization: 'Bearer msy_podjI0ZlCscpQGs4gnVXvKcsJcrTPWL6fH2F',
+        Authorization: 'Bearer msy_rU41WljXoVMHcXL1ce8ajzOYQrFrDGirsVix',
         'Content-Type': 'application/json'
       };
 
