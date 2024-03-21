@@ -4,7 +4,7 @@ import { useGLTF, Stage, OrbitControls } from "@react-three/drei";
 import axios from "axios";
 
 const Model = ({ taskId }) => {
-  const [glbUrl, setGlbUrl] = useState("https://assets.meshy.ai/google-oauth2%7C113623441346525699846/tasks/018e5fd3-02fa-775f-8cdb-ed209eb6d9f9/output/model.glb?Expires=1711264087&Signature=gfcaLBCN6ojX9UNVgVo-1hrrL4ZL0Azk7mkJIkX82FGSS59zuUz-XgNzCPZ7p1AElj36cGGZhR4fpA7rqo8AhEeaz9F~hAVtzjdAXdr5XtXaZOETk6dprjZEy4f1v6tHrRN5ruEB4w-TaVcSASsVXq6Oc84DnsrlxOycokivfbXGT13X9W31VS9eNeWFByyxAtOY8y71WrEvBuxWkDzB5398fOIWqBv4ftYMYvekfDnfpL8J3cDe4ybEEu7sXVl~Ht-PU76hR8mfkV5vettpV5Dk01HanskMVK9fmi~uv9yyhHT5zn9ocvqCVgMapKk0C1S1ExvFkm30xOy-eWkuGg__&Key-Pair-Id=KL5I0C8H7HX83");
+  const [glbUrl, setGlbUrl] = useState();
   const [glb, setGlb] = useState("/towel_stack.glb");
   const [m, setM] = useState();
   const [isSentToBackend, setIsSentToBackend] = useState(false);
@@ -99,6 +99,7 @@ const Model = ({ taskId }) => {
         });
   
         alert('GLB file downloaded and saved to the public folder.');
+        setGlb("/model.glb");
       } else {
         console.error("Task ID or GLB URL is missing.");
       }
@@ -124,7 +125,7 @@ const Model = ({ taskId }) => {
           <button className="mr-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" onClick={() => setDirection('left')}>Left</button>
           <button className="mr-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" onClick={() => setDirection('right')}>Right</button>
           <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" onClick={() => setDirection('perspective')}>Perspective</button>
-          <button className="ml-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" onClick={handleDownload}>Download</button> {/* Download button */}
+          {glbUrl&&<button className="ml-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" onClick={handleDownload}>Download</button>}
         </div>
       </div>
     </div>
