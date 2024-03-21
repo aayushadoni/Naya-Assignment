@@ -4,7 +4,7 @@ import { useGLTF, Stage, OrbitControls } from "@react-three/drei";
 import axios from "axios";
 
 const Model = ({ taskId }) => {
-  const [glbUrl, setGlbUrl] = useState();
+  const [glbUrl, setGlbUrl] = useState("https://assets.meshy.ai/google-oauth2%7C113623441346525699846/tasks/018e61d8-5fa8-7910-827a-7a83ea1e7ca0/output/model.glb?Expires=1711297943&Signature=pHsQ6IzqYCoAeS2d1Gvn655ezZuFHXQeocM~2~1der9eFkrab92KugbKOxsyIhwTFA9koXW27yX91meJw69S5Rsuqne-iqAoSrFcDecDCfZQjcb01G9TXpm3uCRjP3m0lkbXkytX6zkKmnZOeMj50ZUdEseCTyMmwlT0aqLCpgBqasXLjAE6SuLzdD8iEU1vj4gzyNooX5Fl86TquPSIcjXsmA5XQl2WZq6tHikh2Hdd63tqcUeQhhYDuEMPfVhAgf7gR5txyakBZ7thj14yyH8Bv7cUsW8nZitHn8CKRCnBe6HwjbAGqQ-VAh92FyCRNsZwKUFB8Je7kcboHNwg~Q__&Key-Pair-Id=KL5I0C8H7HX83");
   const [glb, setGlb] = useState("/towel_stack.glb");
   const [m, setM] = useState();
   const [isSentToBackend, setIsSentToBackend] = useState(false);
@@ -82,7 +82,7 @@ const Model = ({ taskId }) => {
     try {
       if (glbUrl) {
         
-        const response = await axios.get(`http://localhost:5000/download-glb?glbUrl=${encodeURIComponent(glbUrl)}`, {
+        const response = await axios.get(`https://naya-assignment.onrender.com/download-glb?glbUrl=${encodeURIComponent(glbUrl)}`, {
           responseType: 'arraybuffer', 
         });
 
@@ -92,7 +92,7 @@ const Model = ({ taskId }) => {
         const formData = new FormData();
         formData.append('glbFile', new Blob([response.data])); 
   
-        await axios.post('http://localhost:5000/save-glb', formData, {
+        await axios.post('https://naya-assignment.onrender.com/save-glb', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
