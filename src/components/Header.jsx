@@ -26,7 +26,7 @@ const Header = () => {
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
-      formData.append('upload_preset', "s3t1mno3"); 
+      formData.append('upload_preset', process.env.cloudinary); 
 
       const cloudinaryResponse = await axios.post(
         `https://api.cloudinary.com/v1_1/deklwmu8j/image/upload`,
@@ -59,7 +59,7 @@ const Header = () => {
       };
 
       const headers = {
-        Authorization: 'Bearer msy_rU41WljXoVMHcXL1ce8ajzOYQrFrDGirsVix',
+        Authorization: `Bearer ${process.env.Token}`,
         'Content-Type': 'application/json'
       };
 

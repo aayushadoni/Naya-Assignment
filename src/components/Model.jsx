@@ -12,7 +12,7 @@ const Model = ({ taskId }) => {
   useEffect(() => {
     const fetchGlbUrl = async () => {
       try {
-        const headers = { Authorization: `Bearer msy_rU41WljXoVMHcXL1ce8ajzOYQrFrDGirsVix` };
+        const headers = { Authorization: `Bearer ${process.env.Token}` };
         const response = await axios.get(`https://api.meshy.ai/v1/image-to-3d/${taskId}`, { headers });
         
         if (response.data.progress < 100) {
